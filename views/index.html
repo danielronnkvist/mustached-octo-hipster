@@ -7,20 +7,66 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <style>
+      body, html, h1, p{
+        margin: 0;
+        padding: 0;
+      }
+      #counter{
+        background-color: green;
+      }
+      .fullscreen{
+        height: 50vh;
+        width: 100vw;
+        padding-top: 50vh;
+      }
+      .center{
+        text-align: center;
+      }
+      .hidden{
+        display: none;
+      }
+    </style>
   </head>
   <body ng-controller="photobooth">
-    <p>Hello world!</p>
+    <div id="counter" class="fullscreen">
+      <h1 id="count" class="center"></h1>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    </div>
+    <div id="display" class="fullscreen hidden">
+      <p class="center">{{res}}</p>
+    </div>
     <script>
     var app = angular.module('mustache', []);
+    var interval;
 
     app.controller('photobooth', function($scope, $http){
-      $http.get('/photo')
-        .success(function(data){
-          alert("tjoho!")
-        })
+      document.onclick = sendReq;
+      function sendReq(){
+        var count = 3;
+        var el = document.getElementById('count')
+        el.innerHTML = count;
+        count = 2;
+        interval = setInterval(function(){
+          if( count == 0){
+            $http.get('/photo')
+              .success(function(data){
+                document.getElementById('counter').classList.add('hidden');
+                document.getElementById('display').classList.remove('hidden');
+                el.innerHTML = "";
+                $scope.res = data;
+                clearInterval(interval);
+              });
+          }else{
+            el.innerHTML = count;
+            count--;
+          }
+
+        }, 1000);
+      };
     });
+
     </script>
   </body>
 </html>

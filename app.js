@@ -12,9 +12,11 @@ app.get('/', function(req, res){
 });
 
 app.get('/photo', function(req,res){
-  function puts(error, stdout, stderr) { sys.puts(stdout); }
-  exec("node -v", puts);
-  return res.end()
+  function puts(error, stdout, stderr) {
+    sys.puts(stdout);
+    return res.end(stdout)
+  }
+  exec("ls", puts);
 });
 
 var server = app.listen(8000, function() {
