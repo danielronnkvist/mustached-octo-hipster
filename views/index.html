@@ -24,6 +24,13 @@
       .center{
         text-align: center;
       }
+      img{
+        vertical-align: top;
+        margin-left: 25%;
+        width: 50%;
+        margin-top: -20%;
+
+      }
       .hidden{
         display: none;
       }
@@ -32,10 +39,10 @@
   <body ng-controller="photobooth">
     <div id="counter" class="fullscreen hidden">
       <h1 id="count" class="center"></h1>
-
     </div>
-    <div id="display" class="fullscreen hidden">
-      <p class="center">{{res}}</p>
+
+    <div id="display" class="fullscreen">
+      <img src="http://placekitten.com/g/800/500" ng-show="res">
     </div>
     <script>
     var app = angular.module('mustache', []);
@@ -43,7 +50,9 @@
 
     app.controller('photobooth', function($scope, $http){
       document.onclick = sendReq;
+
       function sendReq(){
+        clearInterval(interval);
         document.getElementById('counter').classList.remove('hidden');
         document.getElementById('display').classList.add('hidden');
         var count = 3;
@@ -64,7 +73,6 @@
             el.innerHTML = count;
             count--;
           }
-
         }, 1000);
       };
     });
