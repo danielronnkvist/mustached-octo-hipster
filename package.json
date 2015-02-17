@@ -1,0 +1,20 @@
+{
+  "name": "mustached-octo-hipster",
+  "version": "0.1.0",
+  "description": "Photo booth",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/danielronnkvist/mustached-octo-hipster"
+  },
+  "author": "Daniel Rönnkvist",
+  "license": "MIT"
+}
