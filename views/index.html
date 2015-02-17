@@ -30,7 +30,7 @@
     </style>
   </head>
   <body ng-controller="photobooth">
-    <div id="counter" class="fullscreen">
+    <div id="counter" class="fullscreen hidden">
       <h1 id="count" class="center"></h1>
 
     </div>
@@ -44,6 +44,8 @@
     app.controller('photobooth', function($scope, $http){
       document.onclick = sendReq;
       function sendReq(){
+        document.getElementById('counter').classList.remove('hidden');
+        document.getElementById('display').classList.add('hidden');
         var count = 3;
         var el = document.getElementById('count')
         el.innerHTML = count;
