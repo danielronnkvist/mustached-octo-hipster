@@ -41,13 +41,14 @@
     </div>
 
     <div id="display" class="fullscreen">
-      <img src="{{res}}" ng-show="res">
+      <img ng-repeat="image in images" src="{{image}}">
     </div>
     <script>
     var app = angular.module('mustache', []);
     var interval;
 
     app.controller('photobooth', function($scope, $http){
+      $scope.images = [];
       document.onclick = sendReq;
 
       function sendReq(){
@@ -65,7 +66,7 @@
                 document.getElementById('counter').classList.add('hidden');
                 document.getElementById('display').classList.remove('hidden');
                 el.innerHTML = "";
-                $scope.res = data;
+                $scope.images.push(data);
                 clearInterval(interval);
               });
           }else{
