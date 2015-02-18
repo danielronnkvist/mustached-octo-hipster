@@ -8,7 +8,8 @@ var photos = [];
 
 app.engine('html', ejs.renderFile);
 // Static folder with resources
-app.use(express.static(__dirname+"/results"));
+app.use("/img",express.static(__dirname+"/results"));
+app.use("/js",express.static(__dirname+"/js"));
 
 app.get('/', function(req, res){
   res.render('index.html');
