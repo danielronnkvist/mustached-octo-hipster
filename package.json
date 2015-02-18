@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "express": "~4.11.2",
-    "ejs": "~2.2.4"
+    "ejs": "~2.2.4",
+    "gm": "~1.17.0"
   },
   "engines": {
     "node": "0.10.x"
