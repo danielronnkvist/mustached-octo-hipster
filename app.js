@@ -25,11 +25,13 @@ app.get('/photo', function(req,res){
       console.log(images.length, " number of images in folder")
       var s = "gm montage -geometry 2048x1300 ";
       for(var i = 0; i < 3; i++){
+        console.log(images[i]);
         s += images[i] + " ";
       }
       var filename = photos.length + ".jpg";
       photos.push(filename);
       s += "pictures/"+filename;
+      console.log(s);
       exec(s, function(err, stdout, stderr){
         return res.end(filename)
       });
