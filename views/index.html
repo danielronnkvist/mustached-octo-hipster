@@ -62,13 +62,13 @@
         interval = setInterval(function(){
           if( count == 0){
               el.innerHTML = "SMILE!";
+              clearInterval(interval);
               $http.get('/photo')
                 .success(function(data){
                   document.getElementById('counter').classList.add('hidden');
                   document.getElementById('display').classList.remove('hidden');
                   el.innerHTML = "";
                   $scope.images.push(data);
-                  clearInterval(interval);
               });
           }else{
             el.innerHTML = count;
