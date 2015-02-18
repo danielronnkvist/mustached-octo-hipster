@@ -19,7 +19,7 @@ app.get('/allPhotos', function(req, res){
   console.log(photos)
   fs.readdir(__dirname+"/results", function(err, images){
     photos = images;
-    return res.end(photos);
+    return res.end(JSON.stringify(photos));
   })
 });
 
