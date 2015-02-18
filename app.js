@@ -26,18 +26,18 @@ app.get('/photo', function(req,res){
       var s = "gm montage -geometry 2048x1300 ";
       for(var i = 0; i < 3; i++){
         console.log(images[i]);
-        s += images[i] + " ";
+        s += __dirname+ "/pictures/" images[i] + " ";
       }
       var filename = photos.length + ".jpg";
       photos.push(filename);
-      s += "pictures/"+filename;
+      s += __dirname + "/pictures/"+filename;
       console.log(s);
       exec(s, function(err, stdout, stderr){
         return res.end(filename)
       });
     });
   }
-  exec("gphoto2 -I 1 -F 3 --capture-image-and-download --filename pictures/%Y%m%d%H%M%S.%C", puts);
+  exec("gphoto2 -I 1 -F 3 --capture-image-and-download --filename "+__dirname+"pictures/%Y%m%d%H%M%S.%C", puts);
 });
 
 var server = app.listen(8000, function() {
