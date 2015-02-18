@@ -37,7 +37,7 @@ app.get('/photo', function(req,res){
       });
     });
   }
-  exec("gphoto2 -I 1 -F 3 --capture-image-and-download --filename "+__dirname+"pictures/%Y%m%d%H%M%S.%C", puts);
+  exec("gphoto2 -I 1 -F 3 --capture-image-and-download --filename "+__dirname+"/pictures/%Y%m%d%H%M%S.%C", puts);
 });
 
 var server = app.listen(8000, function() {
