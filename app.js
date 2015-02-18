@@ -25,7 +25,7 @@ var server = app.listen(8000, function() {
   function puts(error, stdout, stderr) {
     console.log(stdout);
   }
-  exec("gphoto2 --auto-detect");
+  exec("gphoto2 --auto-detect", puts);
   console.log("Listening on port %d", server.address().port);
 });
 
