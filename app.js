@@ -26,7 +26,7 @@ app.get('/photo', function(req,res){
       var s = "gm montage -geometry 2048x1300 ";
       for(var i = 0; i < 3; i++){
         console.log(images[i]);
-        s += __dirname+ "/pictures/" images[i] + " ";
+        s += __dirname + "/pictures/" + images[i] + " ";
       }
       var filename = photos.length + ".jpg";
       photos.push(filename);
