@@ -54,20 +54,20 @@
         clearInterval(interval);
         document.getElementById('counter').classList.remove('hidden');
         document.getElementById('display').classList.add('hidden');
-        $http.get('/photo')
-          .success(function(data){
-          });
         var count = 3;
         var el = document.getElementById('count')
         el.innerHTML = count;
         count = 2;
         interval = setInterval(function(){
           if( count == 0){
-            document.getElementById('counter').classList.add('hidden');
-            document.getElementById('display').classList.remove('hidden');
-            el.innerHTML = "";
-            $scope.res = data;
-            clearInterval(interval);
+            $http.get('/photo')
+              .success(function(data){
+                document.getElementById('counter').classList.add('hidden');
+                document.getElementById('display').classList.remove('hidden');
+                el.innerHTML = "";
+                $scope.res = data;
+                clearInterval(interval);
+              });
           }else{
             el.innerHTML = count;
             count--;

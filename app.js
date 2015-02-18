@@ -1,5 +1,4 @@
 var http = require('http');
-var sys = require('sys');
 var exec = require('child_process').exec;
 var express = require('express')
 var app = express();
@@ -16,7 +15,7 @@ app.get('/', function(req, res){
 
 app.get('/photo', function(req,res){
   function puts(error, stdout, stderr) {
-    sys.puts(stdout);
+    console.log(stdout);
     return res.end("DATA")
   }
   exec("gphoto2 --capture-image-and-download", puts);
@@ -24,7 +23,7 @@ app.get('/photo', function(req,res){
 
 var server = app.listen(8000, function() {
   function puts(error, stdout, stderr) {
-    sys.puts(stdout);
+    console.log(stdout);
   }
   exec("gphoto2 --auto-detect", puts);
   console.log("Listening on port %d", server.address().port);
