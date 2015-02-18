@@ -17,7 +17,7 @@
         background-color: #DBDBDB;
       }
       .fullscreen{
-        height: 50vh;
+        height: 70vh;
         width: 100vw;
         padding-top: 30vh;
       }
@@ -25,8 +25,10 @@
         text-align: center;
       }
       img{
+        vertical-align: top;
         margin-left: 25%;
         width: 50%;
+        /*margin-top: -20%;*/
       }
       .hidden{
         display: none;
@@ -66,7 +68,7 @@
                   document.getElementById('counter').classList.add('hidden');
                   document.getElementById('display').classList.remove('hidden');
                   el.innerHTML = "";
-                  $scope.images.push(data);
+                  $scope.images.unshift(data);
               });
           }else{
             el.innerHTML = count;
