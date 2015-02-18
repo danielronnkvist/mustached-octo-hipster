@@ -18,14 +18,14 @@ app.get('/photo', function(req,res){
     console.log(stdout);
     return res.end("DATA")
   }
-  exec("gphoto2 --auto-detect");
-  exec("gphoto2 --capture-image-and-download", puts);
+  exec("gphoto2 --capture-image-and-download --filename %Y%m%d%H%M%S.%C", puts);
 });
 
 var server = app.listen(8000, function() {
   function puts(error, stdout, stderr) {
     console.log(stdout);
   }
+  exec("gphoto2 --auto-detect");
   console.log("Listening on port %d", server.address().port);
 });
 
