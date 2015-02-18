@@ -8,7 +8,7 @@ var photos = fs.readdir(__dirname+"/pictures", function(err, images){return imag
 
 app.engine('html', ejs.renderFile);
 // Static folder with resources
-app.use(express.static(__dirname+"/pictures"));
+app.use(express.static(__dirname+"/results"));
 
 app.get('/', function(req, res){
   res.render('index.html');
@@ -30,7 +30,7 @@ app.get('/photo', function(req,res){
       }
       var filename = photos.length + ".jpg";
       photos.push(filename);
-      s += __dirname + "/pictures/"+filename;
+      s += __dirname + "/results/"+filename;
       console.log(s);
       exec(s, function(err, stdout, stderr){
         return res.end(filename)
