@@ -4,7 +4,7 @@ var express = require('express')
 var app = express();
 var ejs = require('ejs');
 var fs = require('fs');
-var photos = [];
+var photos = fs.readdir(__dirname+"/results", function(err, photos){return photos;});
 
 app.engine('html', ejs.renderFile);
 // Static folder with resources
@@ -12,6 +12,10 @@ app.use(express.static(__dirname+"/results"));
 
 app.get('/', function(req, res){
   res.render('index.html');
+});
+
+app.get('/allPhtos', function(req, res){
+  return res.end(photos);
 });
 
 
@@ -33,7 +37,7 @@ app.get('/photo', function(req,res){
       if (!photos)
         var filename = "0.jpg";
       else
-	var filename = photos.length + ".jpg";
+        var filename = photos.length + ".jpg";
       photos.push(filename);
       s += __dirname + "/results/"+filename;
       console.log(s);

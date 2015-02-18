@@ -55,6 +55,11 @@
       document.onclick = sendReq;
 
       function sendReq(){
+        $http.get('/allPhotos')
+             .success(function(data){
+              $scope.images = data;
+             });
+
         clearInterval(interval);
         document.getElementById('counter').classList.remove('hidden');
         document.getElementById('display').classList.add('hidden');
