@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="angular.min.js"></script>
+    <script src="/js/angular.min.js"></script>
     <style>
       body, html, h1, p{
         margin: 0;
@@ -44,7 +44,7 @@
     </div>
 
     <div id="display" class="fullscreen">
-      <img ng-repeat="image in images" src="{{image}}">
+      <img ng-repeat="image in images" src="/img/{{image}}">
     </div>
     <script>
     var app = angular.module('mustache', []);
