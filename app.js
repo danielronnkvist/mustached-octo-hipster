@@ -4,7 +4,7 @@ var express = require('express')
 var app = express();
 var ejs = require('ejs');
 var fs = require('fs');
-var photos = [];
+var photos = fs.readdir(__dirname+"/pictures", function(err, images){return images});
 
 app.engine('html', ejs.renderFile);
 // Static folder with resources
@@ -23,7 +23,7 @@ app.get('/photo', function(req,res){
       if (err)
         console.error(err);
       console.log(images.length, " number of images in folder")
-      var s = "gm montage -geometry 1000x211 ";
+      var s = "gm montage -geometry 333x221 ";
       for(var i = images.length-1; i > images.length-4; i--){
         console.log(images[i]);
         s += __dirname + "/pictures/" + images[i] + " ";
