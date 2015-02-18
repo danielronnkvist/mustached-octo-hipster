@@ -6,6 +6,8 @@ var app = express();
 var ejs = require('ejs');
 
 app.engine('html', ejs.renderFile);
+// Static folder with resources
+app.use(express.static(__dirname));
 
 app.get('/', function(req, res){
   res.render('index.html');
