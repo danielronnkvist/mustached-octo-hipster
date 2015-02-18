@@ -51,6 +51,7 @@
       document.onclick = sendReq;
 
       function sendReq(){
+        var ht = $http.get('/photo')
         clearInterval(interval);
         document.getElementById('counter').classList.remove('hidden');
         document.getElementById('display').classList.add('hidden');
@@ -60,8 +61,7 @@
         count = 2;
         interval = setInterval(function(){
           if( count == 0){
-            $http.get('/photo')
-              .success(function(data){
+              ht.success(function(data){
                 document.getElementById('counter').classList.add('hidden');
                 document.getElementById('display').classList.remove('hidden');
                 el.innerHTML = "";
