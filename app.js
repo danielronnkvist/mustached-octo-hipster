@@ -4,7 +4,7 @@ var express = require('express')
 var app = express();
 var ejs = require('ejs');
 var fs = require('fs');
-var photos = fs.readdir(__dirname+"/results", function(err, photos){return photos;});
+var photos = [];
 
 app.engine('html', ejs.renderFile);
 // Static folder with resources
@@ -16,7 +16,11 @@ app.get('/', function(req, res){
 
 app.get('/allPhotos', function(req, res){
   console.log("All photos")
-  return res.end(photos);
+  console.log(photos)
+  fs.readdir(__dirname+"/results", function(err, images){
+    photos = images;
+    return res.end(photos);
+  })
 });
 
 
