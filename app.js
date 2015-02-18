@@ -23,7 +23,7 @@ app.get('/photo', function(req,res){
       if (err)
         console.error(err);
       console.log(images.length, " number of images in folder")
-      var s = "gm montage -geometry 2048x1300 ";
+      var s = "gm montage -geometry 1000x211 ";
       for(var i = images.length-1; i > images.length-4; i--){
         console.log(images[i]);
         s += __dirname + "/pictures/" + images[i] + " ";
