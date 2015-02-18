@@ -14,7 +14,7 @@ app.get('/', function(req, res){
   res.render('index.html');
 });
 
-app.get('/allPhtos', function(req, res){
+app.get('/allPhotos', function(req, res){
   console.log("All photos")
   return res.end(photos);
 });
