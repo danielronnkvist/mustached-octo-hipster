@@ -15,6 +15,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/allPhtos', function(req, res){
+  console.log("All photos")
   return res.end(photos);
 });
 

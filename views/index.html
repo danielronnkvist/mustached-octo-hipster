@@ -57,6 +57,7 @@
       function sendReq(){
         $http.get('/allPhotos')
              .success(function(data){
+              console.log(data)
               $scope.images = data;
              });
 
