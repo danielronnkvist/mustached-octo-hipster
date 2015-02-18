@@ -19,7 +19,10 @@ app.get('/photo', function(req,res){
   function puts(error, stdout, stderr) {
     console.log(stdout);
     // Make some sweeet GraphicsMagick stuff
-    fs.readdir('/pictures', function(err, images) {
+    fs.readdir(__dirname+'/pictures', function(err, images) {
+      if (err)
+        console.error(err);
+      console.log(images.length, " number of images in folder")
       var s = "gm montage -geometry 2048x1300 ";
       for(var i = 0; i < 3; i++){
         s += images[i] + " ";
@@ -32,7 +35,7 @@ app.get('/photo', function(req,res){
       });
     });
   }
-  exec("gphoto2 --capture-image-and-download --frames 3 --filename pictures/%Y%m%d%H%M%S.%C ", puts);
+  exec("gphoto2 -I 1 -F 3 --capture-image-and-download --filename pictures/%Y%m%d%H%M%S.%C", puts);
 });
 
 var server = app.listen(8000, function() {
