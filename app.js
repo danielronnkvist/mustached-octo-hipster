@@ -15,11 +15,9 @@ app.get('/', function(req, res){
 app.get('/photo', function(req,res){
   function puts(error, stdout, stderr) {
     sys.puts(stdout);
+    return res.end("DATA")
   }
-  exec("ls", puts);
   exec("gphoto2 --capture-image-and-download", puts);
-  exec("ls", puts);
-  return res.end("lol")
 });
 
 var server = app.listen(8000, function() {
