@@ -7,7 +7,7 @@ The camera took three photos with one second between each shot. I used gphoto2 t
 
 #Dependencies
 
-* gphoto2, version 2.5.6 compiled from source. I stumbled uppon a bug that made the camera *busy*.
+* gphoto2, version 2.5.6 compiled from source. I stumbled uppon a bug that made the camera *busy*. The solution was to compile from source.
 * libgphoto2, version 2.5.7 also compiled from source.
 * Graphicsmagick, version 1.3.16
 
